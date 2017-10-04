@@ -55,12 +55,13 @@ body
 .hide {display:none;}
 
 
-#topbar {height: 80px;}
-#spreadsheetname {width: 200px;}
+#topbar {height: 50px; padding:6px; background-color:#80A9F3;}
+#spreadsheetname {width: 300px;}
 #filename_div {display:none;background-color:#ECECEC;width:400px;height:30px;padding:20px 10px 15px 10px;}
 #filenameinput {width:200px;height:20px;}
 #submitfilename {margin-left:20px;}
 button.iconbtn, button.iconbtn2 {border: none; box-shadow: none; background:transparent; margin: 5px 5px; padding: 5px;}
+button.iconbtn {margin-right: 15px;}
 button.iconbtn:hover {background:#6699cc;}
 button.iconbtn2:hover {background:#ddd;}
 
@@ -74,14 +75,14 @@ button.iconbtn2:hover {background:#ddd;}
 
 
 #list_search {margin-top:0px;padding:15px 10px 30px 10px;width:600px;background-color:white;border:1px solid #666;}
-#sheetlisting p {margin-top:10px;}
+#sheetslisting p {margin-top:10px;}
 
-#searchsheets {margin: 20px 0 10px 10px; padding:5px; width:480px; height: 30px; border: 1px solid #666; background:#f4f4f4;}
+#searchinput {margin: 20px 0 10px 10px; padding:5px; width:480px; height: 30px; border: 1px solid #666; background:#f4f4f4;}
 
 #searchbtn img {width:18px;height:18px;}
 #closeSliderbtn {float:right;}
 
-#searchname {margin-left:180px;}
+#searchname {margin-left:40px;}
 #searchtext {margin-left:40px;}
 
 #docslistingdiv {
@@ -113,6 +114,7 @@ button.iconbtn2:hover {background:#ddd;}
 #searchbtn img {width:18px;height:18px;}
 #openSliderbtn img {width:20px;height:18px;}
 
+#newfilebtn img {width:20px; height:19px;}
 #savefilebtn img, #saveasbtn img {width:21px; height:20px;}
 #downloadbtn img {width:20px; height:20px;}
 #htmltablebtn img {width:19px; height:19px;}
@@ -120,21 +122,9 @@ button.iconbtn2:hover {background:#ddd;}
 #exportbtn img {width:17px; height:18px;}
 #reloadbtn img {width:18px; height:19px;}
 
-#rightbtns {margin-top:14px; margin-left: 30px; float:right;}
+#rightbtns .mathbtn {margin-bottom:5px;width:110px; font-size: 10px;}
 
 #canonicalinput {display: none;}
 
 #inputforms {width:100%;}
 
-
-@media all and (min-width: 1200px) {
-  #topbar {height: 50px;}
-}
-
-@media all and (max-width: 1199px) {
-  #spreadsheetname {width: 300px;}
-}
-
-@media all and (min-width: 1300px) {
-  #spreadsheetname {width: 300px;}
-}

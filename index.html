@@ -16,32 +16,35 @@
 </head>
 <body onload="setupDocs();" onresize="doresize();" onunload="saveMHSpreadsheets();">
 
+
   <div id="docslistingdiv">
     <div id="list_search" class="slide slide-up">
       <p><button id="closeSliderbtn" class="iconbtn2" title="Close Spreadsheet Listings/Search Panel"><img src="images/glyphicons-370-collapse-top.png" class="flipimg"></button> <span id="list_name"><span id="mh">MH</span>Spreadsheet</span></p>
-      <input type="search" id="searchsheets" name="searchsheets" title="Search Textbox Input" />
+      <input type="search" id="searchinput" name="searchinput" title="Search Textbox Input" />
       <button id="searchbtn" class="iconbtn2" title="Search Listing"><img src="images/glyphicons-28-search.png"></button>
+      <label for="searchname"><input type="radio" name="searchwhat" id="searchname" checked /> Sheet Name</label>
+      <label for="searchtext"><input type="radio" name="searchwhat" id="searchtext" /> Sheet Name/Text</label><br><br>
       <div id="sheetslisting">
       </div>
     </div>
   </div>
 
+
+<div id="topbar">
+  <button id="openSliderbtn" class="iconbtn" title="Open Spreadsheet Listings/Search Panel"><img src="images/glyphicons-115-list.png"></button>
+  <input type="text" id="spreadsheetname" value="newfile.html" readonly />
+  <button id="savefilebtn" class="iconbtn" title="Save Spreadsheet"><img src="images/glyphicons-415-disk-save.png"></button>
+  <button id="newfilebtn" class="iconbtn" title="New Spreadsheet"><img src="images/glyphicons-703-file-plus.png"></button>
+  <button id="saveasbtn" class="iconbtn" title="Save As Spreadsheet"><img src="images/glyphicons-511-duplicate.png"></button>
+  <button id="downloadbtn" class="iconbtn" title="Download Sheet/Edit/Audit"><img src="images/glyphicons-201-download.png"></button>
+  <button id="htmltablebtn" class="iconbtn" title="Download HTML Table"><img src="images/glyphicons-120-table.png"></button>
+  <button id="exportbtn" class="iconbtn" title="Download Canoconical"><img src="images/glyphicons-360-file-export.png"></button>
+  <button id="importbtn" class="iconbtn" title="Import Canoconical"><img src="images/glyphicons-359-file-import.png"></button>
+  <button id="reloadbtn" class="iconbtn" title="Reset Spreadsheet" onclick="doreload();"><img src="images/glyphicons-82-refresh.png"></button>
+</div>
+
   
 <form name="f0" action="" method="POST">
-<div id="topbar" style="padding:6px;background-color:#80A9F3;">
-<button id="openSliderbtn" class="iconbtn" title="Open Spreadsheet Listings/Search Panel"><img src="images/glyphicons-115-list.png"></button>
-<!-- <span id="spreadsheetname" style="font-weight:bold;color:white;">newfile.html</span> -->
-
-<input type="text" id="spreadsheetname" value="newfile.html" readonly />
-<button id="savefilebtn" class="iconbtn" title="Save Spreadsheet"><img src="images/glyphicons-415-disk-save.png"></button>
-<button id="saveasbtn" class="iconbtn" title="Save As Spreadsheet"><img src="images/glyphicons-511-duplicate.png"></button>
-<button id="downloadbtn" class="iconbtn" title="Download Sheet/Edit/Audit"><img src="images/glyphicons-201-download.png"></button>
-<button id="htmltablebtn" class="iconbtn" title="Download HTML Table"><img src="images/glyphicons-120-table.png"></button>
-<button id="exportbtn" class="iconbtn" title="Download Canoconical"><img src="images/glyphicons-360-file-export.png"></button>
-<button id="importbtn" class="iconbtn" title="Import Canoconical"><img src="images/glyphicons-359-file-import.png"></button>
-<button id="reloadbtn" class="iconbtn" title="Reset Spreadsheet" onclick="doreload();"><img src="images/glyphicons-82-refresh.png"></button>
-
-<!--   ***************************************************************************************  -->
 <input class="hide" type="submit" name="newcolors" value="New Colors" onclick="document.f0.action='?4C808';" class="smaller">
 <input class="hide" type="button" value="Recalc" onclick="spreadsheet.ExecuteCommand('recalc', '');" class="smaller">
 <input class="hide" type="button" value="Redisplay" onclick="spreadsheet.editor.ScheduleRender();" class="smaller">
@@ -56,13 +59,7 @@
 <input class="hide" type="button" value="Sum2" onclick="dosum2();" class="smaller">
 <!--  ********************************************************************************** -->
 
-<div id="rightbtns">
-  <input type="button" value="Loc Constants" onclick="doLocConstants();" class="smaller">
-  <input type="button" value="Canonicalize" onclick="var t=new Date();var i;for(i=0;i<1;i++){spreadsheet.sheet.CanonicalizeSheet(true);}addmsg(((new Date()-t)/1000));" class="smaller">
-  <input type="button" value="Time Canonicalize" onclick="var t=new Date();var i;for(i=0;i<100;i++){spreadsheet.sheet.CanonicalizeSheet(true);}addmsg(((new Date()-t)/1000));" class="smaller">
-  <input type="button" value="Time Save" onclick="var t=new Date();var i;for(i=0;i<100;i++){spreadsheet.CreateSpreadsheetSave();}addmsg(((new Date()-t)/1000));" class="smaller">
-  <input type="button" value="Time C-Save" onclick="var t=new Date();var i;for(i=0;i<100;i++){spreadsheet.sheet.CreateSheetSave(null,true);}addmsg(((new Date()-t)/1000));" class="smaller">
-  <input type="button" value="Time Encode" onclick="var t=new Date();var i;for(i=0;i<100;i++){spreadsheet.sheet.EncodeCellAttributes(spreadsheet.editor.ecell.coord);}addmsg(((new Date()-t)/1000));" class="smaller">
+
 
 <!--   ***********************************************************************************  -->
 
@@ -70,9 +67,6 @@
   <input type="hidden" name="newstr" id="newdata" value="">
   <input type="hidden" name="pagename" value="$pagename">
   <input type="hidden" name="sheetname" value="$sheetname">
-</div>
-
-</div>
 </form>
 
 <div id="inputforms">
@@ -88,10 +82,21 @@
   </div>
 </div>
 
+
 <div id="msg" style="position:absolute;right:15px;margin-top:10px">
-<input type="button" style="font-size:x-small;" value="Clear" onclick="addmsg('',true);"><br>
-<textarea id="msgtext" style="margin-top:10px;width:110px;height:200px;"></textarea><br>
+  <div id="rightbtns">
+    <input type="button" class="mathbtn" value="Loc Constants" onclick="doLocConstants();" class="smaller"><br>
+    <input type="button" class="mathbtn" value="Canonicalize" onclick="var t=new Date();var i;for(i=0;i<1;i++){spreadsheet.sheet.CanonicalizeSheet(true);}addmsg(((new Date()-t)/1000));" class="smaller"><br>
+    <input type="button" class="mathbtn" value="Time Canonicalize" onclick="var t=new Date();var i;for(i=0;i<100;i++){spreadsheet.sheet.CanonicalizeSheet(true);}addmsg(((new Date()-t)/1000));" class="smaller"><br>
+    <input type="button" class="mathbtn" value="Time Save" onclick="var t=new Date();var i;for(i=0;i<100;i++){spreadsheet.CreateSpreadsheetSave();}addmsg(((new Date()-t)/1000));" class="smaller"><br>
+    <input type="button" class="mathbtn" value="Time C-Save" onclick="var t=new Date();var i;for(i=0;i<100;i++){spreadsheet.sheet.CreateSheetSave(null,true);}addmsg(((new Date()-t)/1000));" class="smaller"><br>
+    <input type="button" class="mathbtn" value="Time Encode" onclick="var t=new Date();var i;for(i=0;i<100;i++){spreadsheet.sheet.EncodeCellAttributes(spreadsheet.editor.ecell.coord);}addmsg(((new Date()-t)/1000));" class="smaller"><br>
+  </div>
+  <textarea id="msgtext" style="margin-top:5px;margin-bottom:5px;width:110px;height:200px;"></textarea><br>
+  <input type="button" style="font-size:x-small;" value="Clear" onclick="addmsg('',true);"><br>
 </div>
+
+
 <div id="tableeditor" style="margin:8px 140px 10px 0px;">editor goes here</div>
 
 
@@ -195,12 +200,14 @@ var copyfile = false;
 function update_sheetslisting(srchinput) {
     "use strict";
     var i, fileslist_items = "", this_list = document.getElementById("sheetslisting");
+    var searchtext = document.getElementById("searchtext");
     this_list.innerHTML = null;
     if (srchinput === null) {
-      document.getElementById("searchsheets").value = "";
+      document.getElementById("searchinput").value = "";
     }
     for (i = mh_spreadsheets.length - 1; i >= 0; i-=1) {
-      if ((srchinput === null) || (mh_spreadsheets[i].sheetname.indexOf(srchinput) > -1)) {
+      var thisinfo = mh_spreadsheets[i].sheetinfo.toString().toLowerCase();
+      if ((srchinput === null) || (mh_spreadsheets[i].sheetname.indexOf(srchinput) > -1) || ((searchtext.checked === true) && (thisinfo.indexOf(srchinput) > -1))) {
           fileslist_items = fileslist_items + '<p><button id="deletebtn' + mh_spreadsheets[i].id + '" class="deletefilebtn" title="Delete ' + mh_spreadsheets[i].sheetname + '"><img src="images/glyphicons-208-remove.png"></button><button id="editbtn' + mh_spreadsheets[i].id + '" class="editfilebtn" title="Edit ' + mh_spreadsheets[i].sheetname + '"><img src="images/glyphicons-151-edit.png"></button>' + mh_spreadsheets[i].sheetname + '</p>';
       }
     }
@@ -270,7 +277,7 @@ function deletefile(btnid) {
 
 var searchbtn = document.getElementById("searchbtn");
 searchbtn.addEventListener("click", function () {
-    var searchinput = document.getElementById("searchsheets").value.trim();
+    var searchinput = document.getElementById("searchinput").value.trim().toLowerCase();
     if (searchinput !== "") {
         update_sheetslisting(searchinput);
     } else {
@@ -278,9 +285,9 @@ searchbtn.addEventListener("click", function () {
     }
 });
 
-var searchsheets = document.getElementById("searchsheets");
-searchsheets.addEventListener("change", function () {
-    if (searchsheets.value === "") {
+var searchinput = document.getElementById("searchinput");
+searchinput.addEventListener("change", function () {
+    if (searchinput.value === "") {
         update_sheetslisting(null);
     }
 });
@@ -330,21 +337,21 @@ submitfilename.addEventListener("click", function (e) {
 });
 
 
-function newfile() {
+
+var newfilebtn = document.getElementById("newfilebtn");
+newfilebtn.addEventListener("click", function(e) {
+  e.preventDefault();
+  if (copyfile === false) {
+    doreload();
+  }
   document.getElementById("filename_div").style.display = "block";
   document.getElementById("filenameinput").focus();
   doresize();
   freezesheet();
-}
-
+});
 
 
 function dosave() {
-  var newname = document.getElementById("spreadsheetname").value;
-  if (newname === "newfile.html") {
-    newfile();
-    return;
-  }
   if (presentsheet_id === -1) {
     var this_group = {};
     if (mh_spreadsheets.length > 0) {
@@ -352,7 +359,7 @@ function dosave() {
     } else {
       this_group.id = 0;
     }
-    this_group.sheetname = newname;
+    this_group.sheetname = document.getElementById("spreadsheetname").value;
     this_group.sheetinfo = "";
     mh_spreadsheets.push(this_group);
     presentsheet_id = this_group.id;
@@ -362,10 +369,13 @@ function dosave() {
   update_sheetslisting(null);
 }
 
+
 var savefilebtn = document.getElementById("savefilebtn");
 savefilebtn.addEventListener("click", function(e) {
-   e.preventDefault();
+  e.preventDefault();
+  if (document.getElementById("spreadsheetname").value !== "newfile.html") {
    dosave();
+  }
 });
 
 
@@ -389,7 +399,7 @@ saveasbtn.addEventListener("click", function(e) {
     return;
   }
   copyfile = true;
-  newfile();
+  newfilebtn.click();
 });
 
 
@@ -453,12 +463,21 @@ importbtn.addEventListener("click", function(e) {
   if (document.getElementById("spreadsheetname").value === "newfile.html") {
     alert('May not overwrite "newfile.html"!');
   } else {
+    var thisinfo = mh_spreadsheets[presentsheet_id].sheetinfo.toString();
+  //  alert(thisinfo);
+    if (thisinfo.indexOf("cell:") > -1) {
+    //   alert("sheet not empty");
+      var checkstr = window.confirm('This sheet is not empty. Click "OK" to proceed, otherwise "Cancel"?');
+      if (checkstr === false) {
+        return;
+      }
+    }
     document.getElementById("canonicalinput").style.display = "block";
     document.getElementById("canonicaltext").value = "";
     document.getElementById("canonicaltext").focus();
     doresize();
     freezesheet();
-  }
+   }
 });
 
 var canonicaltext = document.getElementById("canonicaltext");
@@ -512,6 +531,9 @@ var openSlider = document.getElementById("openSliderbtn"),
 
 openSlider.addEventListener("click", function (e) {
     e.preventDefault();
+    document.getElementById("filename_div").style.display = "none";
+    document.getElementById("canonicalinput").style.display = "none";
+    doresize();
     docslistingdiv.style.zIndex = 2000;
     slide.classList.remove("slide-up");
     update_sheetslisting(null);
@@ -534,6 +556,12 @@ reloadbtn.addEventListener("click", function(e) {
 
 
 function doreload() {
+  if (document.getElementById("spreadsheetname").value !== "newfile.html") {
+    var checkstr = window.confirm('If this sheet needs to be saved first, then click "Cancel"; otherwise click "OK".');
+    if (checkstr === false) {
+        return;
+    }
+  }
   presentsheet_id = -1;
   document.getElementById("SocialCalc-edittab").click();
   spreadsheet.sheet.ResetSheet();
