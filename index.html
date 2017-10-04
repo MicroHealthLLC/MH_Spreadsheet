@@ -344,10 +344,12 @@ newfilebtn.addEventListener("click", function(e) {
   if (copyfile === false) {
     doreload();
   }
-  document.getElementById("filename_div").style.display = "block";
-  document.getElementById("filenameinput").focus();
-  doresize();
-  freezesheet();
+  if (document.getElementById("spreadsheetname").value === "newfile.html") {
+    document.getElementById("filename_div").style.display = "block";
+    document.getElementById("filenameinput").focus();
+    doresize();
+    freezesheet();
+  }
 });
 
 
