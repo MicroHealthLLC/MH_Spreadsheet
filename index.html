@@ -250,25 +250,26 @@ function editfile(btnid) {
 
 function deletefile(btnid) {
     "use strict";
-    var checkstr = window.confirm('Sure you want to delete this sheet? Click "OK" to proceed, otherwise "Cancel"?');
-    if (checkstr === false) {
-        return;
-    }
-    var found = false, i = -1;
-    while ((found === false) && (i < mh_spreadsheets.length)) {
-        i += 1;
-        if (mh_spreadsheets[i].id === Number(btnid)) {
-            found = true;
-        }
-    }
-    if (found === true) {
-        mh_spreadsheets.splice(i, 1);
-        if (Number(btnid) === presentsheet_id) {
-          doreload();
-        }
-        update_sheetslisting(null);
+    if (Number(btnid) !== presentsheet_id) {
+      var checkstr = window.confirm('Sure you want to delete this sheet? Click "OK" to proceed, otherwise "Cancel"?');
+      if (checkstr === false) {
+          return;
+      }
+      var found = false, i = -1;
+      while ((found === false) && (i < mh_spreadsheets.length)) {
+          i += 1;
+          if (mh_spreadsheets[i].id === Number(btnid)) {
+              found = true;
+          }
+      }
+      if (found === true) {
+          mh_spreadsheets.splice(i, 1);
+          update_sheetslisting(null);
+      } else {
+          alert("Error, sheet not found!");
+      }
     } else {
-        alert("Error, sheet not found!");
+      alert('Click "Reset Spreadsheet" first!');
     }
 }
 
@@ -555,13 +556,15 @@ reloadbtn.addEventListener("click", function(e) {
 
 
 function doreload() {
-  if (document.getElementById("spreadsheetname").value !== "newfile.html") {
+  if (presentsheet_id !== -1) {
     mh_spreadsheets[presentsheet_id].sheetinfo = spreadsheet.sheet.CreateSheetSave(null,true);
   }
-  presentsheet_id = -1;
   document.getElementById("SocialCalc-edittab").click();
   spreadsheet.sheet.ResetSheet();
+  presentsheet_id = -1;    
   document.getElementById("spreadsheetname").value = "newfile.html";
+//  setTimeout(function () {
+//  }, 1200);
   return;
 }
 
