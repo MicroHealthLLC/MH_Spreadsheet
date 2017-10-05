@@ -299,6 +299,7 @@ cancelfilename.addEventListener("click", function (e) {
   document.getElementById("filename_div").style.display = "none";
   unfreezesheet();
   doresize();
+  copyfile = false;
 });
 
 var submitfilename = document.getElementById("submitfilename");
@@ -336,18 +337,20 @@ submitfilename.addEventListener("click", function (e) {
 
 
 
+function filenameform() {
+  document.getElementById("filename_div").style.display = "block";
+  document.getElementById("filenameinput").focus();
+  doresize();
+  freezesheet();
+}
+
 var newfilebtn = document.getElementById("newfilebtn");
 newfilebtn.addEventListener("click", function(e) {
   e.preventDefault();
-  if (copyfile === false) {
+  if (document.getElementById("spreadsheetname").value !== "newfile.html") {
     doreload();
   }
-  if (document.getElementById("spreadsheetname").value === "newfile.html") {
-    document.getElementById("filename_div").style.display = "block";
-    document.getElementById("filenameinput").focus();
-    doresize();
-    freezesheet();
-  }
+  filenameform();
 });
 
 
@@ -395,12 +398,12 @@ function saveasfile() {
 var saveasbtn = document.getElementById("saveasbtn");
 saveasbtn.addEventListener("click", function(e) {
   e.preventDefault();
-  if (document.getElementById("spreadsheetname").value === "newfile.html") {
+  if (document.getElementById("spreadsheetname").value !== "newfile.html") {
+    copyfile = true;
+    filenameform();
+  } else {
     alert("May not duplicate newfile.html!");
-    return;
   }
-  copyfile = true;
-  newfilebtn.click();
 });
 
 
