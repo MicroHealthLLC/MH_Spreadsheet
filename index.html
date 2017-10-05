@@ -38,8 +38,8 @@
   <button id="saveasbtn" class="iconbtn" title="Save As Spreadsheet"><img src="images/glyphicons-511-duplicate.png"></button>
   <button id="downloadbtn" class="iconbtn" title="Download Sheet/Edit/Audit"><img src="images/glyphicons-201-download.png"></button>
   <button id="htmltablebtn" class="iconbtn" title="Download HTML Table"><img src="images/glyphicons-120-table.png"></button>
-  <button id="exportbtn" class="iconbtn" title="Download Canoconical"><img src="images/glyphicons-360-file-export.png"></button>
-  <button id="importbtn" class="iconbtn" title="Import Canoconical"><img src="images/glyphicons-359-file-import.png"></button>
+  <button id="exportbtn" class="iconbtn" title="Save/Download Canonical"><img src="images/glyphicons-360-file-export.png"></button>
+  <button id="importbtn" class="iconbtn" title="Import Canonical"><img src="images/glyphicons-359-file-import.png"></button>
   <button id="reloadbtn" class="iconbtn" title="Reset Spreadsheet" onclick="doreload();"><img src="images/glyphicons-82-refresh.png"></button>
 </div>
 
@@ -451,6 +451,7 @@ exportbtn.addEventListener("click", function(e) {
     var sheetname = mh_spreadsheets[presentsheet_id].sheetname.slice(0,-4) + "txt";
     var blob = new Blob(sheetcontents, {type: "text/plain"});
     saveAs(blob, sheetname);
+    dosave();
   } else {
     alert('May not export "newfile.html"!');
   }
@@ -499,7 +500,7 @@ var submitcanonicalbtn = document.getElementById("submitcanonical");
 submitcanonicalbtn.addEventListener("click", function(e) {
   e.preventDefault();
   if (document.getElementById("canonicaltext").value.trim() === "") {
-    alert("Submit canoconical text!");
+    alert("Submit canonical text!");
   } else {
     unfreezesheet();
     spreadsheet.ParseSheetSave(document.getElementById("canonicaltext").value.trim());
