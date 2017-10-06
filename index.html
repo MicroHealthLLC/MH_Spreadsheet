@@ -383,12 +383,14 @@ savefilebtn.addEventListener("click", function(e) {
 });
 
 
-
 function saveasfile() {
+  gathersheet();
   var this_group = {};
+  var t = new Date();
   this_group.id = Number(mh_spreadsheets[mh_spreadsheets.length - 1].id) + 1;
   this_group.sheetname = document.getElementById("spreadsheetname").value;
   this_group.sheetinfo = mh_spreadsheets[presentsheet_id].sheetinfo;
+  this_group.sheetaudit = "Date: " + t + "\nCopied from: " + mh_spreadsheets[presentsheet_id].sheetname + "\n\n" + spreadsheet.CreateSpreadsheetSave() + "\n\n*******************************************************************************************\n\n\n";
   mh_spreadsheets.push(this_group);
   presentsheet_id = this_group.id;
   copyfile = false;
@@ -398,7 +400,7 @@ function saveasfile() {
 var saveasbtn = document.getElementById("saveasbtn");
 saveasbtn.addEventListener("click", function(e) {
   e.preventDefault();
-  if (document.getElementById("spreadsheetname").value !== "newfile.html") {
+  if (presentsheet_id !== -1) {
     copyfile = true;
     filenameform();
   } else {
@@ -411,9 +413,7 @@ saveasbtn.addEventListener("click", function(e) {
 var htmltablebtn = document.getElementById("htmltablebtn");
 htmltablebtn.addEventListener("click", function(e) {
   e.preventDefault();
-  if (document.getElementById("spreadsheetname").value === "newfile.html") {
-    alert("No File Selected for Download!");
-  } else {
+  if (presentsheet_id !== -1) {
     mh_spreadsheets[presentsheet_id].sheetinfo = spreadsheet.sheet.CreateSheetSave(null,true);
     var sheetcontents = [];
     var sheettable = spreadsheet.CreateSheetHTML();
@@ -421,6 +421,8 @@ htmltablebtn.addEventListener("click", function(e) {
     var sheetname = mh_spreadsheets[presentsheet_id].sheetname;
     var blob = new Blob(sheetcontents, {type: "text/html"});
     saveAs(blob, sheetname);
+  } else {
+    alert("No File Selected for Download!");
   }
 });
 
@@ -429,17 +431,15 @@ htmltablebtn.addEventListener("click", function(e) {
 var downloadbtn = document.getElementById("downloadbtn");
 downloadbtn.addEventListener("click", function(e) {
   e.preventDefault();
-  if (document.getElementById("spreadsheetname").value === "newfile.html") {
-    alert("No File Selected for Download!");
-  } else {
-    mh_spreadsheets[presentsheet_id].sheetinfo = spreadsheet.sheet.CreateSheetSave(null,true);
-    var t = new Date();
+  if (presentsheet_id !== -1) {
+    gathersheet();
     var sheetcontents = [];
-    var sheetall = "Date: " + t + "\n\n" + spreadsheet.CreateSpreadsheetSave();
-    sheetcontents.push(sheetall);
     var sheetname = mh_spreadsheets[presentsheet_id].sheetname.slice(0,-5) + "_audit.txt";
+    sheetcontents.push(mh_spreadsheets[presentsheet_id].sheetaudit);
     var blob = new Blob(sheetcontents, {type: "text/plain"});
     saveAs(blob, sheetname);
+  } else {
+    alert("No File Selected for Download!");
   }
 });
 
@@ -448,7 +448,7 @@ downloadbtn.addEventListener("click", function(e) {
 var exportbtn = document.getElementById("exportbtn");
 exportbtn.addEventListener("click", function(e) {
   e.preventDefault();
-  if (document.getElementById("spreadsheetname").value !== "newfile.html") {
+  if (presentsheet_id !== -1) {
     mh_spreadsheets[presentsheet_id].sheetinfo = spreadsheet.sheet.CreateSheetSave(null,true);
     var sheetcontents = [];
     sheetcontents.push(mh_spreadsheets[presentsheet_id].sheetinfo);
@@ -464,9 +464,7 @@ exportbtn.addEventListener("click", function(e) {
 var importbtn = document.getElementById("importbtn");
 importbtn.addEventListener("click", function(e) {
   e.preventDefault();
-  if (document.getElementById("spreadsheetname").value === "newfile.html") {
-    alert('May not overwrite "newfile.html"!');
-  } else {
+  if (presentsheet_id !== -1) {
     var thisinfo = mh_spreadsheets[presentsheet_id].sheetinfo.toString();
     if (thisinfo.indexOf("cell:") > -1) {
       var checkstr = window.confirm('This sheet is not empty. Click "OK" to proceed, otherwise "Cancel"?');
@@ -479,7 +477,9 @@ importbtn.addEventListener("click", function(e) {
     document.getElementById("canonicaltext").focus();
     doresize();
     freezesheet();
-   }
+  } else {
+    alert('May not overwrite "newfile.html"!');
+  }
 });
 
 var canonicaltext = document.getElementById("canonicaltext");
@@ -512,7 +512,9 @@ submitcanonicalbtn.addEventListener("click", function(e) {
 
 function saveMHSpreadsheets() {
     "use strict";
-    mh_spreadsheets[presentsheet_id].sheetinfo = spreadsheet.sheet.CreateSheetSave(null,true);
+    if (presentsheet_id !== -1) {
+      gathersheet();
+    }
     var thesemh_spreadsheets = JSON.stringify(mh_spreadsheets);
     localStorage.setItem("thesemh_spreadsheets", thesemh_spreadsheets);
 }
@@ -551,6 +553,27 @@ closeSlider.addEventListener("click", function (e) {
 });
 
 
+function gathersheet() {
+    mh_spreadsheets[presentsheet_id].sheetinfo = spreadsheet.sheet.CreateSheetSave(null,true);
+    var justviewed = false;
+    var t = new Date();
+    var thisaudit;
+    if (spreadsheet.sheet.changes.stack.length > 0) {
+      if (spreadsheet.views.audit.element.innerHTML !== '<table style="margin-bottom:10px;" cellspacing="0" cellpadding="0"><tbody><tr><td style="font-size:small;padding:6px;"><b>Audit Trail This Session:</b><br><br></td></tr></tbody></table>') {
+        thisaudit = "Date: " + t + "\n\n" + spreadsheet.CreateSpreadsheetSave() + "\n\n*******************************************************************************************\n\n\n";
+      } else {
+        justviewed = true;
+      }
+    } else {
+      justviewed = true;
+    }
+    if (justviewed === true) {
+      thisaudit = "Date: " + t + "\n\n" + "No updates to spreadsheet, just viewed." + "\n\n\n*******************************************************************************************\n\n\n";
+    }
+    mh_spreadsheets[presentsheet_id].sheetaudit = mh_spreadsheets[presentsheet_id].sheetaudit + thisaudit;
+    return;  
+}
+
 var reloadbtn = document.getElementById("reloadbtn");
 reloadbtn.addEventListener("click", function(e) {
    e.preventDefault();
@@ -560,14 +583,12 @@ reloadbtn.addEventListener("click", function(e) {
 
 function doreload() {
   if (presentsheet_id !== -1) {
-    mh_spreadsheets[presentsheet_id].sheetinfo = spreadsheet.sheet.CreateSheetSave(null,true);
+    gathersheet();
   }
   document.getElementById("SocialCalc-edittab").click();
   spreadsheet.sheet.ResetSheet();
   presentsheet_id = -1;    
   document.getElementById("spreadsheetname").value = "newfile.html";
-//  setTimeout(function () {
-//  }, 1200);
   return;
 }
 

@@ -55,8 +55,8 @@ body
 .hide {display:none;}
 
 
-#topbar {height: 50px; padding:6px; background-color:#80A9F3;}
-#spreadsheetname {width: 300px;}
+#topbar {height: 50px; padding:12px 6px 6px 6px; background-color:#80A9F3;}
+#spreadsheetname {width: 300px; padding: 6px; border:none; border-bottom: 1px solid #6699cc; background-color: transparent; color:#eee; font-family:helvetica,arial,sans-serif;font-weight: bold; font-size: 14px;}
 #filename_div {display:none;background-color:#ECECEC;width:400px;height:30px;padding:20px 10px 15px 10px;}
 #filenameinput {width:200px;height:20px;}
 #submitfilename {margin-left:20px;}
