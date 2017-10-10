@@ -339,7 +339,6 @@ submitfilename.addEventListener("click", function (e) {
 
 function filenameform() {
   document.getElementById("filename_div").style.display = "block";
-  document.getElementById("filenameinput").focus();
   doresize();
   freezesheet();
 }
@@ -778,7 +777,6 @@ function doLocConstants() {
 function freezesheet() {
  "use strict";
    document.getElementById("maininput").disabled = true;
-   document.getElementById("tableeditor").disabled = true;
    setTimeout(function() {
      document.getElementById("maininput").value = "";
    }, 600);
@@ -788,7 +786,6 @@ function freezesheet() {
 function unfreezesheet() {
  "use strict";
    document.getElementById("maininput").disabled = false;
-   document.getElementById("tableeditor").disabled = false;
    return;
 }
 
@@ -796,7 +793,7 @@ function checkName() {
  "use strict";
   if (document.getElementById("spreadsheetname").value === "newfile.html") {
    freezesheet();
-   alert('Click "New Spreadsheet" button first and create a file!');
+   alert('Click "New Spreadsheet" button and create a file first!');
  } else {
    unfreezesheet();
  }

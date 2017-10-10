@@ -1776,7 +1776,15 @@ SocialCalc.EditorProcessKey = function(editor, ch, e) {
             result = editor.MoveECellWithKey(ch);
             return !result;
             }
+/* NOTE: Original code
          if (ch=="[del]" || ch=="[backspace]") {
+            if (!editor.noEdit) {
+               editor.EditorApplySetCommandsToRange("empty", "");
+               }
+            break;
+            }
+*/
+         if (ch=="[del]" || ((ch=="[backspace]") && (presentsheet_id !== -1))) {
             if (!editor.noEdit) {
                editor.EditorApplySetCommandsToRange("empty", "");
                }
