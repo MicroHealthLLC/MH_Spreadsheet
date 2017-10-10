@@ -221,9 +221,7 @@ function unfreezesheet() {
 
 var maininput = document.getElementById("maininput");
 maininput.addEventListener("change", function () {
-//  if ((document.getElementById("filename_div").style.display === "block") || (document.getElementById("canonicalinput").style.display === "block")) {
   if ((filenamediv.style.display === "block") || (canonicalinput.style.display === "block")) {
-
      freezesheet();
   } else {
      unfreezesheet();
@@ -338,7 +336,6 @@ var cancelfilename = document.getElementById("cancelfilename");
 cancelfilename.addEventListener("click", function (e) {
   e.preventDefault();
   document.getElementById("filenameinput").value = "";
-//  document.getElementById("filename_div").style.display = "none";
   filenamediv.style.display = "none";
   unfreezesheet();
   doresize();
@@ -366,7 +363,6 @@ submitfilename.addEventListener("click", function (e) {
       if (found === false) {
         spreadsheetname.value = filenameinput;
         document.getElementById("filenameinput").value = "";
-      //  document.getElementById("filename_div").style.display = "none";
         filenamediv.style.display = "none";
         unfreezesheet();
         doresize();
@@ -382,8 +378,7 @@ submitfilename.addEventListener("click", function (e) {
 
 
 function filenameform() {
-//  document.getElementById("filename_div").style.display = "block";
-    filenamediv.style.display = "block";
+  filenamediv.style.display = "block";
   doresize();
   freezesheet();
 }
@@ -564,6 +559,7 @@ function saveMHSpreadsheets() {
 
 function setupDocs() {
     "use strict";
+    spreadsheetname.value = "newfile.html";
     var thesemh_spreadsheets = localStorage.getItem("thesemh_spreadsheets");
     if ((thesemh_spreadsheets !== null) && (thesemh_spreadsheets !== "") && (thesemh_spreadsheets !== undefined)) {
         mh_spreadsheets = JSON.parse(thesemh_spreadsheets);
@@ -578,9 +574,7 @@ var openSlider = document.getElementById("openSliderbtn"),
 
 openSlider.addEventListener("click", function (e) {
     e.preventDefault();
-  //  document.getElementById("filename_div").style.display = "none";
     filenamediv.style.display = "none";
-
     canonicalinput.style.display = "none";
     doresize();
     docslistingdiv.style.zIndex = 2000;
