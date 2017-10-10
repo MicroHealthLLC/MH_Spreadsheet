@@ -1784,7 +1784,7 @@ SocialCalc.EditorProcessKey = function(editor, ch, e) {
             break;
             }
 */
-         if (ch=="[del]" || ((ch=="[backspace]") && (presentsheet_id !== -1))) {
+         if (ch=="[del]" || ((ch=="[backspace]") && (document.getElementById("filename_div").style.display === "none") && (document.getElementById("canonicalinput").style.display === "none"))) {
             if (!editor.noEdit) {
                editor.EditorApplySetCommandsToRange("empty", "");
                }
@@ -6024,8 +6024,7 @@ SocialCalc.ProcessKeyDown = function(e) {
    }
 
 SocialCalc.ProcessKeyPress = function(e) {
-
-   if (document.getElementById("filename_div").style.display === "block") {
+   if ((document.getElementById("filename_div").style.display === "block") || (document.getElementById("canonicalinput").style.display === "block")) {
       return;
    }
 
