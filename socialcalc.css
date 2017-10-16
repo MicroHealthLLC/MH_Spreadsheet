@@ -54,15 +54,15 @@ body
 .smaller {font-size:smaller;}
 .hide {display:none;}
 
-button.iconbtn, button.iconbtn2 {border: none; box-shadow: none; background:transparent; margin: 5px 5px; padding: 5px;}
+button.iconbtn, button.iconbtn2 {border: none; box-shadow: none; background-color:transparent; margin: 5px 5px; padding: 5px;}
 button.iconbtn {margin-right: 15px;}
-button.iconbtn:hover {background:#6699cc;}
-button.iconbtn2:hover {background:#ddd;}
+button.iconbtn:hover {background-color:#ddd;}
+button.iconbtn2:hover {background-color:#ddd;}
 
 
-#topbar {height: 50px; padding:13px 6px 5px 6px; background-color:#80A9F3;}
-#spreadsheetname {width: 300px; padding: 6px; border:none; border-bottom: 1px solid #6699cc; background-color: transparent; color:#eee; font-family:helvetica,arial,sans-serif;font-weight: bold; font-size: 14px;}
-#filename_div {display:none;position:absolute; top:14px; left:66px; background-color:#80A9F3;border:1px solid #6699cc;width:310px;height:40px;padding:6px 4px 8px 10px;}
+#topbar {height: 50px; padding:13px 6px 5px 6px; background-color: #D0D0D0;}
+#spreadsheetname {width: 300px; padding: 6px; border:none; border-bottom: 1px solid #999; background-color: transparent; color:#333; font-family:helvetica,arial,sans-serif;font-weight: bold; font-size: 14px;}
+#filename_div {display:none;position:absolute; top:14px; left:66px; background-color:#ccc; border:1px solid #999;width:310px;height:40px;padding:6px 4px 8px 10px;}
 #filenameinput {width:200px;height:20px;}
 #submitfilename, #cancelfilename {margin-left:0px; margin-right:0px;}
 #submitfilename img, #cancelfilename img {width:20px; height:20px;}
@@ -79,7 +79,7 @@ button.iconbtn2:hover {background:#ddd;}
 #sheetslisting {margin:20px 10px 0px;}
 #sheetslisting p {margin-top:10px;}
 
-#searchinput {margin: 10px 0; padding:5px; width:500px; height: 30px; border: 1px solid #666; background:#f4f4f4;}
+#searchinput {margin: 10px 0; padding:5px; width:500px; height: 30px; border: 1px solid #666; background-color:#f4f4f4;}
 
 #searchbtn img {width:18px;height:18px;}
 
@@ -112,8 +112,8 @@ button.iconbtn2:hover {background:#ddd;}
 
 #deleteallbtn {margin-top:10px; margin-left:8px; font-size:14px; font-family: Helvetica, Arial, sans-serif;}
 #deleteallbtn img {width:20px; height:20px; margin-right:0px;}
-.deletefilebtn, .editfilebtn {margin-right:20px; background:transparent; border:none; padding: 5px 5px 3px 5px;}
-.deletefilebtn:hover, .editfilebtn:hover {background:#ddd;}
+.deletefilebtn, .editfilebtn {margin-right:20px; background-color:transparent; border:none; padding: 5px 5px 3px 5px;}
+.deletefilebtn:hover, .editfilebtn:hover {background-color:#ddd;}
 .deletefilebtn img {width:14px;height:14px;}
 .editfilebtn img {width:18px;height:16px;}
 #sheetlisting {margin-top: 20px;}
