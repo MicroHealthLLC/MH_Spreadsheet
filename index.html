@@ -46,6 +46,13 @@
 </div>
 
 
+<div id="filename_div">
+   <span><input type="text" id="filenameinput" title="Spreadsheet Name Textbox" placeholder="input spreadsheet name"  onfocus="SocialCalc.CmdGotFocus(this);" />.html</span>
+   <input type="text" id="nametype" value="newname" hidden />
+   <button id="submitfilename" class="iconbtn" title="Submit Spreadsheet Name"><img src="images/glyphicons-194-ok-sign.png"></button>
+   <button id="cancelfilename" class="iconbtn" title="Cancel Spreadsheet Name"><img src="images/glyphicons-193-remove-sign.png"></button>
+</div>
+
 <form name="f0" action="" method="POST">
 <input class="hide" type="submit" name="newcolors" value="New Colors" onclick="document.f0.action='?4C808';" class="smaller">
 <input class="hide" type="button" value="Recalc" onclick="spreadsheet.ExecuteCommand('recalc', '');" class="smaller">
@@ -91,14 +98,6 @@
  
 <div id="tableeditor" style="margin:8px 140px 10px 0px;">editor goes here</div>
 
-
-
-<div id="filename_div">
-   <span><input type="text" id="filenameinput" title="Spreadsheet Name Textbox" placeholder="input spreadsheet name"  onfocus="SocialCalc.CmdGotFocus(this);" />.html</span>
-   <input type="text" id="nametype" value="newname" hidden />
-   <button id="submitfilename" class="iconbtn" title="Submit Spreadsheet Name"><img src="images/glyphicons-194-ok-sign.png"></button>
-   <button id="cancelfilename" class="iconbtn" title="Cancel Spreadsheet Name"><img src="images/glyphicons-193-remove-sign.png"></button>
-</div>
 
 
 
