@@ -54,34 +54,37 @@ body
 .smaller {font-size:smaller;}
 .hide {display:none;}
 
-
-#topbar {height: 50px; padding:12px 6px 6px 6px; background-color:#80A9F3;}
-#spreadsheetname {width: 300px; padding: 6px; border:none; border-bottom: 1px solid #6699cc; background-color: transparent; color:#eee; font-family:helvetica,arial,sans-serif;font-weight: bold; font-size: 14px;}
-#filename_div {display:none;background-color:#ECECEC;width:400px;height:30px;padding:20px 10px 15px 10px;}
-#filenameinput {width:200px;height:20px;}
-#submitfilename {margin-left:20px;}
 button.iconbtn, button.iconbtn2 {border: none; box-shadow: none; background:transparent; margin: 5px 5px; padding: 5px;}
 button.iconbtn {margin-right: 15px;}
 button.iconbtn:hover {background:#6699cc;}
 button.iconbtn2:hover {background:#ddd;}
 
 
+#topbar {height: 50px; padding:13px 6px 5px 6px; background-color:#80A9F3;}
+#spreadsheetname {width: 300px; padding: 6px; border:none; border-bottom: 1px solid #6699cc; background-color: transparent; color:#eee; font-family:helvetica,arial,sans-serif;font-weight: bold; font-size: 14px;}
+#filename_div {display:none;position:absolute; top:14px; left:66px; background-color:#80A9F3;border:1px solid #6699cc;width:310px;height:40px;padding:6px 4px 8px 10px;}
+#filenameinput {width:200px;height:20px;}
+#submitfilename, #cancelfilename {margin-left:0px; margin-right:0px;}
+#submitfilename img, #cancelfilename img {width:20px; height:20px;}
+
+
 #openSliderbtn {margin-right:20px;}
 #openSliderbtn img {width:20px;height:18px;}
 
 
-#list_name {color:darkorange;font-weight:bold;font-size:18px;}
-#mh {color:#004080;}
+#list_name {margin-left:10px;font-size:24px;font-weight:bold;color:#DD9036;}
+#mh {color:#1D336F;}
 
-
-#list_search {margin-top:0px;padding:15px 10px 30px 10px;width:600px;background-color:white;border:1px solid #666;}
+#list_search {margin-top:0px;padding:10px 10px 20px 10px;width:600px;background-color:white;border:1px solid #666;}
 #sheetslisting {margin:20px 10px 0px;}
 #sheetslisting p {margin-top:10px;}
 
-#searchinput {margin: 20px 0 10px 10px; padding:5px; width:480px; height: 30px; border: 1px solid #666; background:#f4f4f4;}
+#searchinput {margin: 10px 0; padding:5px; width:500px; height: 30px; border: 1px solid #666; background:#f4f4f4;}
 
 #searchbtn img {width:18px;height:18px;}
+
 #closeSliderbtn {float:right;}
+#filesessionmsg {margin-top:20px; font-size: 10px; font-weight: bold; display:none;}
 
 #searchname {margin-left:120px;}
 #searchtext {margin-left:40px;}
@@ -108,7 +111,7 @@ button.iconbtn2:hover {background:#ddd;}
 }
 
 #deleteallbtn {margin-top:10px; margin-left:8px; font-size:14px; font-family: Helvetica, Arial, sans-serif;}
-#deleteallbtn img {width:20px; height:20px; margin-right:10px;}
+#deleteallbtn img {width:20px; height:20px; margin-right:0px;}
 .deletefilebtn, .editfilebtn {margin-right:20px; background:transparent; border:none; padding: 5px 5px 3px 5px;}
 .deletefilebtn:hover, .editfilebtn:hover {background:#ddd;}
 .deletefilebtn img {width:14px;height:14px;}
@@ -118,15 +121,17 @@ button.iconbtn2:hover {background:#ddd;}
 #openSliderbtn img {width:20px;height:18px;}
 
 #newfilebtn img {width:20px; height:19px;}
-#savefilebtn img, #saveasbtn img {width:21px; height:20px;}
+#savefilebtn img, #duplicatebtn img {width:21px; height:20px;}
 #downloadbtn img {width:20px; height:20px;}
 #htmltablebtn img {width:19px; height:19px;}
 #importbtn img {width:16px; height:18px;}
 #exportbtn img {width:17px; height:18px;}
 #reloadbtn img {width:18px; height:19px;}
 
-#rightbtns .mathbtn {margin-bottom:5px;width:110px; font-size: 10px;}
+#msg {position:absolute;right:15px;margin-top:10px;text-align:center;}
+.mathbtn {margin-bottom:5px;width:110px; font-size: 10px;}
+#msgtext {margin-top:5px;margin-bottom:5px;width:110px;height:200px;}
 
-#canonicalinput {display: none;}
-
-#inputforms {width:100%;}
+#canonicalinput {display: none; width:100%;}
+#submitcanonical img, #cancelcanonical img {width:20px; height:20px;}
+#canonicaltext {margin-top:10px;width:90%;height:200px;}
