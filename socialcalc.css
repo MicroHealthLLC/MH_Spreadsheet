@@ -79,12 +79,12 @@ button.iconbtn2:hover {background-color:#ddd;}
 #sheetslisting {margin:20px 10px 0px;}
 #sheetslisting p {margin-top:10px;}
 
-#searchinput {margin: 10px 0; padding:5px; width:500px; height: 30px; border: 1px solid #666; background-color:#f4f4f4;}
+#searchinput {margin: 0 0 10px 10px; padding:5px; width:500px; height: 30px; border: 1px solid #666; background-color:#f4f4f4;}
 
 #searchbtn img {width:18px;height:18px;}
 
 #closeSliderbtn {float:right;}
-#filesessionmsg {margin-top:20px; font-size: 10px; font-weight: bold; display:none;}
+#filesessionmsg {margin-top:20px; margin-left:10px; font-size: 10px; font-weight: bold; display:none;}
 
 #searchname {margin-left:120px;}
 #searchtext {margin-left:40px;}
