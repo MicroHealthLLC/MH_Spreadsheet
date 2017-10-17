@@ -38,7 +38,9 @@
     <button id="searchbtn" class="iconbtn2" title="Submit Search"><img src="images/glyphicons-28-search.png"></button>
     <label for="searchname"><input type="radio" name="searchwhat" id="searchname" checked /> Sheet Name</label>
     <label for="searchtext"><input type="radio" name="searchwhat" id="searchtext" /> Sheet Name/Text</label><br>
-    <button id="deleteallbtn" class="iconbtn2" title="Delete All Files"><img src="images/glyphicons-198-remove-circle.png"></button> Delete All Files<br>
+    <div id="deletediv">
+      <button id="deleteallbtn" class="iconbtn2" title="Delete All Files"><img src="images/glyphicons-198-remove-circle.png"></button> Delete All Files<br>
+    </div>
     <div id="sheetslisting">
     </div>
     <div id="filesessionmsg">NOTE: Download all files before ending this session!</div>
@@ -245,11 +247,14 @@ function update_sheetslisting(srchinput) {
             deletefile(this.id.slice(9));
        });
     }           
+    var deletediv = document.getElementById("deletediv");
     var filesessionmsg = document.getElementById("filesessionmsg");
     if (mh_spreadsheets.length > 0) {
+        deletediv.style.display = "block";
         filesessionmsg.style.display = "block";
     } else {
         filesessionmsg.style.display = "none";
+        deletediv.style.display = "none";
     }
 }
 
@@ -519,7 +524,6 @@ importbtn.addEventListener("click", function(e) {
   e.preventDefault();
   var checkok = false;
   if (presentsheet_id !== -1) {
-  //  var thisinfo = mh_spreadsheets[presentsheet_id].sheetinfo.toString();
     if (mh_spreadsheets[presentsheet_id].sheetinfo.toString().indexOf("cell:") > -1) {
       checkok = true;
     }
@@ -629,12 +633,6 @@ function gathersheet() {
 }
 
 
-var reloadbtn = document.getElementById("reloadbtn");
-reloadbtn.addEventListener("click", function(e) {
-   e.preventDefault();
-   doreload();
-});
-
 
 function doreload() {
  if (presentsheet_id !== -1) {
@@ -655,6 +653,13 @@ function doreload() {
   nametype.value = "newname";
   return;
 }
+
+
+var reloadbtn = document.getElementById("reloadbtn");
+reloadbtn.addEventListener("click", function(e) {
+   e.preventDefault();
+   doreload();
+});
 
 
 function doresize() {

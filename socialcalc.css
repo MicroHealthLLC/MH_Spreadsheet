@@ -61,8 +61,8 @@ button.iconbtn2:hover {background-color:#ddd;}
 
 
 #topbar {margin-top:-10px;margin-left:-10px;margin-right:-10px;height: 50px; padding:13px 6px 5px 6px; background-color: #D0D0D0;}
-#spreadsheetname {width: 300px; padding: 6px; border:none; border-bottom: 1px solid #999; background-color: transparent; color:#333; font-family:helvetica,arial,sans-serif;font-weight: bold; font-size: 14px;}
-#filename_div {z-index:1500; display:none;margin-top:-61px; margin-left:44px; margin-bottom:13px; background-color:#999; border:1px solid #ccc;width:310px;height:40px;padding:6px 4px 8px 10px;}
+#spreadsheetname {width: 300px; padding: 6px; border:none; border-bottom: 2px solid #aaa; background-color: transparent; color:#333; font-family:helvetica,arial,sans-serif;font-weight: bold; font-size: 14px;}
+#filename_div {z-index:1500; display:none;margin-top:-61px; margin-left:44px; margin-bottom:15px; background-color:#aaa; width:310px;height:40px;padding:6px 4px 8px 10px;}
 #filenameinput {width:200px;height:20px;}
 #submitfilename, #cancelfilename {margin-left:0px; margin-right:0px;}
 #submitfilename img, #cancelfilename img {width:20px; height:20px;}
@@ -72,10 +72,10 @@ button.iconbtn2:hover {background-color:#ddd;}
 #openSliderbtn img {width:20px;height:18px;}
 
 
-#list_name {margin-left:10px;font-size:24px;font-weight:bold;color:#DD9036;}
+#list_name {margin: 10px 0 10px 10px;font-family:verdana,helvetica,sans-serif;font-size:24px;font-weight:bold;color:#DD9036;}
 #mh {color:#1D336F;}
 
-#list_search {margin-top:0px;padding:10px 10px 20px 10px;width:600px;background-color:white;border:1px solid #666;}
+#list_search {margin-top:0px;padding:10px 10px 20px 10px;width:600px;background-color:white;border:1px solid #666;font-family:helvetica,sans-serif;font-size:14px;}
 #sheetslisting {margin:20px 10px 0px;}
 #sheetslisting p {margin-top:10px;}
 
@@ -84,6 +84,7 @@ button.iconbtn2:hover {background-color:#ddd;}
 #searchbtn img {width:18px;height:18px;}
 
 #closeSliderbtn {float:right;}
+#deletediv {display:none;}
 #filesessionmsg {margin-top:20px; margin-left:10px; font-size: 10px; font-weight: bold; display:none;}
 
 #searchname {margin-left:120px;}
